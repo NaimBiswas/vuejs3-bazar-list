@@ -46,6 +46,10 @@
                         v-model="item.price">
                   </td>
                </tr>
+               <tr v-if="isShow()">
+                  <td colspan="3"
+                     class="text-center text-danger">No Item Found</td>
+               </tr>
                <tr>
                   <td class="text-center"
                      colspan="2">Total</td>
@@ -68,6 +72,7 @@
                }
             },
             methods: {
+
                submit() {
                   if (this.itemName.length > 0) {
                      this.items.push({
@@ -77,11 +82,15 @@
                   }
                   this.itemName = '';
                },
+               isShow() {
+                  return this.items.length <= 0;
+               },
                removeItem(index) {
                   this.items.splice(index, 1);
                },
             },
             computed: {
+
                total() {
                   var total = 0;
                   this.items.forEach(item => {
