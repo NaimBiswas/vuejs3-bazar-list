@@ -60,10 +60,12 @@
             },
             methods: {
                submit() {
-                  this.items.push({
-                     name: this.itemName,
-                     price: 0,
-                  });
+                  if (itemName.length > 0) {
+                     this.items.push({
+                        name: this.itemName,
+                        price: 0,
+                     });
+                  }
                   this.itemName = '';
                }
             },
