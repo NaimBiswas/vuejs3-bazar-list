@@ -15,6 +15,7 @@
          class="row container">
 
          <div class="col-lg-6 offset-lg-3 mt-4">
+            <h3>Enter Your Item Name</h3>
             <input v-model="itemName"
                @keydown.enter='submit'
                type="text"
@@ -46,7 +47,7 @@
                <tr>
                   <td class="text-center"
                      colspan="2">Total</td>
-                  <td>12</td>
+                  <td>{{ total }}</td>
                </tr>
             </table>
          </div>
@@ -58,9 +59,9 @@
                return {
                   itemName: '',
                   items: [
-                     { name: 'Rice ', price: '12' },
-                     { name: 'Oil ', price: '12' },
-                     { name: 'Vagitable', price: '12' },
+                     { name: 'Rice ', price: 12 },
+                     { name: 'Oil ', price: 12 },
+                     { name: 'Vagitable', price: 12 },
                   ],
                }
             },
@@ -76,7 +77,13 @@
                }
             },
             computed: {
-
+               total() {
+                  var total = 0;
+                  this.items.forEach(item => {
+                     total += parseFloat(item.price);
+                  });
+                  return total;
+               }
             },
          }
          Vue.createApp(app).mount('#app');
