@@ -12,7 +12,10 @@
 
    <body>
       <div id="app">
-         {{ title }}
+         <ul>
+            <li v-for="(item, index) in items"
+               :key="index">{{ item['name'] }}</li>
+         </ul>
       </div>
 
 
@@ -26,7 +29,15 @@
          const app = {
             data() {
                return {
-                  title: 'This is vue js test',
+                  items: [
+                     { name: 'Rice - 12' },
+                     { name: 'Oil - 12' },
+                     { name: 'Vagitable - 12' },
+                  ],
+               }
+            },
+            methods: {
+               items() {
                }
             },
          }
