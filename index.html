@@ -36,6 +36,8 @@
                      {{ index +1 }}
                   </td>
                   <td>
+                     <button @click="removeItem(item.index)"
+                        class="btn btn-danger btn-sm">Remove</button>
                      {{ item.name }}
                   </td>
                   <td>
@@ -74,7 +76,10 @@
                      });
                   }
                   this.itemName = '';
-               }
+               },
+               removeItem(index) {
+                  this.items.splice(index, 1);
+               },
             },
             computed: {
                total() {
